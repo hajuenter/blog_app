@@ -4,7 +4,7 @@ import { assets } from "../assets/assets";
 const Header = () => {
   return (
     <div className="mx-8 sm:mx-16 xl:mx-24 relative">
-      <div className="text-center mt-24 lg:mt-32 mb-8">
+      <div className="text-center mt-8 lg:mt-20 md:mt-12 mb-8">
         <div className="inline-flex items-center justify-center gap-4 px-6 py-1.5 mb-4 border border-primary/40 bg-primary/10 rounded-full text-sm text-primary">
           <p>New: AI feature integrated</p>
           <img src={assets.star_icon} alt="star" className="w-2.5" />
