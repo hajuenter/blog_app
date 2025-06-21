@@ -7,7 +7,7 @@ const BlogList = () => {
   const [menu, setMenu] = useState("All");
   return (
     <div>
-      <div className="flex justify-center gap-4 sm:gap-8 my-10 relative">
+      <div className="flex justify-center gap-4 sm:gap-2 my-10 relative">
         {blogCategories.map((item) => (
           <div key={item} className="relative">
             <button
@@ -19,7 +19,7 @@ const BlogList = () => {
               {item}
               {menu === item && (
                 <motion.div
-                  layoutId="undeerline"
+                  layoutId="underline"
                   transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   className="absolute left-0 right-0 top-0 h-7 -z-1 bg-primary rounded-full"
                 ></motion.div>

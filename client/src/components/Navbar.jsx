@@ -6,7 +6,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="fixed top-0 w-full bg-white z-50">
+    <div className="sticky top-0 w-full bg-white z-50 shadow">
       <div className="max-w-7xl mx-auto flex justify-between items-center py-5 px-4 sm:px-8">
         <img
           onClick={() => navigate("/")}
