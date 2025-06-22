@@ -16,7 +16,7 @@ const Comment = () => {
 
   return (
     <div className="w-full h-full overflow-y-auto p-4 md:p-10 bg-blue-50/50 pb-4">
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center max-w-3xl mb-4 gap-2">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-2">
         <h1>Komentar</h1>
 
         <div className="flex gap-1 md:gap-3 lg:gap-4 xl:gap-7">
@@ -42,38 +42,55 @@ const Comment = () => {
         </div>
       </div>
 
-      <div className="relative mt-4 max-w-3xl overflow-x-auto bg-white shadow rounded-lg scrollbar-hide">
-        <table className="w-full text-sm text-gray-500">
-          <thead className="text-xs text-gray-600 text-left uppercase bg-gray-50">
-            <tr>
-              <th scope="col" className="px-3 py-3">
-                Judul Blog & Komentar
-              </th>
-              <th scope="col" className="px-3 py-3">
-                Tanggal
-              </th>
-              <th scope="col" className="px-3 py-3">
-                Aksi
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {comment
-              .filter((comment) => {
-                if (filter === "Sudah Konfirmasi")
-                  return comment.isApproved === true;
-                return comment.isApproved === false;
-              })
-              .map((comment, index) => (
-                <CommentTableItem
-                  key={comment._id}
-                  comment={comment}
-                  index={index + 1}
-                  fetchComments={fetchComment}
-                />
-              ))}
-          </tbody>
-        </table>
+      <div className="w-full mt-4 mb-3 bg-white rounded-lg shadow overflow-hidden max-w-full">
+        <div className="overflow-x-auto">
+          <table
+            className="w-full text-sm text-gray-700"
+            style={{ minWidth: "500px" }}
+          >
+            <thead className="text-xs text-gray-600 uppercase bg-gray-50">
+              <tr>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left"
+                  style={{ minWidth: "250px" }}
+                >
+                  Judul Blog & Komentar
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left"
+                  style={{ width: "100px" }}
+                >
+                  Tanggal
+                </th>
+                <th
+                  scope="col"
+                  className="px-3 py-3 text-left"
+                  style={{ width: "120px" }}
+                >
+                  Aksi
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {comment
+                .filter((comment) => {
+                  if (filter === "Sudah Konfirmasi")
+                    return comment.isApproved === true;
+                  return comment.isApproved === false;
+                })
+                .map((comment, index) => (
+                  <CommentTableItem
+                    key={comment._id}
+                    comment={comment}
+                    index={index + 1}
+                    fetchComments={fetchComment}
+                  />
+                ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
