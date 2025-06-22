@@ -20,7 +20,8 @@ const Dashboard = () => {
 
   return (
     <div className="w-full h-full overflow-y-auto p-4 md:p-10 bg-blue-50/50 pb-4">
-      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4">
+      <h1>Dashboard</h1>
+      <div className="flex mt-4 flex-col sm:flex-row sm:flex-wrap gap-4">
         <div className="flex items-center gap-4 bg-white p-4 w-full sm:min-w-58 sm:flex-1 rounded shadow cursor-pointer hover:scale-105 transition-all">
           <img src={assets.dashboard_icon_1} alt="" />
           <div>

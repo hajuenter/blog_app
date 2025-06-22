@@ -27,35 +27,35 @@ const ListBlog = () => {
               <tr>
                 <th
                   scope="col"
-                  className="px-3 py-4 text-left"
+                  className="px-3 py-3 text-left"
                   style={{ width: "50px" }}
                 >
                   #
                 </th>
                 <th
                   scope="col"
-                  className="px-3 py-4 text-left"
+                  className="px-3 py-3 text-left"
                   style={{ minWidth: "150px" }}
                 >
                   Judul Blog
                 </th>
                 <th
                   scope="col"
-                  className="px-3 py-4 text-left"
+                  className="px-3 py-3 text-left"
                   style={{ width: "100px" }}
                 >
                   Tanggal
                 </th>
                 <th
                   scope="col"
-                  className="px-3 py-4 text-left"
+                  className="px-3 py-3 text-left"
                   style={{ width: "80px" }}
                 >
                   Status
                 </th>
                 <th
                   scope="col"
-                  className="px-3 py-4 text-left"
+                  className="px-3 py-3 text-left"
                   style={{ width: "120px" }}
                 >
                   Aksi
