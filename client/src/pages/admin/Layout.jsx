@@ -29,9 +29,11 @@ const Layout = () => {
         </div>
       </div>
 
-      <div className="flex h-[calc(100vh-70px)]">
+      <div className="flex h-[calc(100vh-70px)] overflow-hidden">
         <Sidebar />
-        <Outlet />
+        <div className="flex-1 overflow-hidden">
+          <Outlet />
+        </div>
       </div>
     </>
   );
