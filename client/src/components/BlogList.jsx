@@ -7,7 +7,7 @@ const BlogList = () => {
   const [menu, setMenu] = useState("All");
   return (
     <div>
-      <div className="flex justify-center gap-4 sm:gap-2 my-10 relative">
+      <div className="flex justify-center gap-3 md:gap-4 lg:gap-8 xl:gap-12 my-10 relative">
         {blogCategories.map((item) => (
           <div key={item} className="relative">
             <button

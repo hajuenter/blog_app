@@ -35,7 +35,7 @@ const BlogTableItem = ({ blog, fetchBlog, index }) => {
             {isPublished ? "Unpublish" : "Publish"}
           </button>
           <button
-            className="w-6 h-6 flex items-center justify-center rounded bg-red-300 hover:bg-red-500 transition-colors"
+            className="w-6 h-6 flex items-center justify-center rounded bg-red-300 hover:bg-red-500 transition-colors cursor-pointer"
             title="Hapus blog"
           >
             <img src={assets.cross_icon} className="w-4 h-4" alt="delete" />
