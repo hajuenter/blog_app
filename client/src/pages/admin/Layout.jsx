@@ -1,13 +1,53 @@
 import React from "react";
 import { assets } from "../../assets/assets";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Sidebar from "../../components/admin/Sidebar";
+import { useAppContext } from "../../context/AppContext";
+import { toast } from "react-hot-toast";
 
 const Layout = () => {
-  const navigate = useNavigate();
-
+  const { axios, setToken, navigate } = useAppContext();
   const logout = () => {
-    navigate("/");
+    toast(
+      (t) => (
+        <div className="flex flex-col gap-3">
+          <div>
+            <p className="font-medium">Konfirmasi Logout</p>
+            <p className="text-sm text-gray-600">
+              Yakin ingin keluar dari aplikasi?
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <button
+              onClick={async () => {
+                toast.dismiss(t.id);
+                try {
+                  localStorage.removeItem("token");
+                  axios.defaults.headers.common["Authorization"] = null;
+                  setToken(null);
+                  navigate("/");
+                } catch (error) {
+                  toast.error("Gagal logout");
+                }
+              }}
+              className="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600"
+            >
+              Logout
+            </button>
+            <button
+              onClick={() => toast.dismiss(t.id)}
+              className="bg-gray-300 px-3 py-1 rounded text-sm hover:bg-gray-400"
+            >
+              Batal
+            </button>
+          </div>
+        </div>
+      ),
+      {
+        duration: Infinity,
+        position: "top-center",
+      }
+    );
   };
 
   return (

@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { comments_data } from "../../assets/assets";
 import CommentTableItem from "../../components/admin/CommentTableItem";
+import { useAppContext } from "../../context/AppContext";
+import toast from "react-hot-toast";
 
 const Comment = () => {
   const [comment, setComment] = useState([]);
   const [filter, setFilter] = useState("Belum Konfirmasi");
-
-  const fetchComment = () => {
-    setComment(comments_data);
+  const { axios } = useAppContext();
+  const fetchComment = async () => {
+    try {
+      const { data } = await axios.get("/api/admin/comments");
+      data.success ? setComment(data.comments) : toast.error(data.message);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   useEffect(() => {

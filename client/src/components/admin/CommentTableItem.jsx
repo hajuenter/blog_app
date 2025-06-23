@@ -1,9 +1,79 @@
 import React from "react";
 import { assets } from "../../assets/assets";
+import { useAppContext } from "../../context/AppContext";
+import toast from "react-hot-toast";
 
 const CommentTableItem = ({ comment, fetchComments }) => {
-  const { blog, createdAt } = comment;
+  const { blog, createdAt, _id } = comment; // Tambahkan _id di destructuring
   const blogDate = new Date(createdAt);
+  const { axios } = useAppContext();
+
+  const approveComment = async () => {
+    try {
+      const { data } = await axios.post("/api/admin/approve-comment", {
+        id: _id,
+      });
+      if (data.success) {
+        toast.success(data.message);
+        await fetchComments();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const deleteComment = async () => {
+    toast(
+      (t) => (
+        <div className="flex flex-col gap-3">
+          <div>
+            <p className="font-medium">Hapus Komentar</p>
+            <p className="text-sm text-gray-600">
+              Yakin ingin menghapus komentar dari {comment.name}?
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <button
+              onClick={async () => {
+                toast.dismiss(t.id);
+                try {
+                  const { data } = await axios.delete(
+                    "/api/admin/delete-comment",
+                    {
+                      data: { id: _id },
+                    }
+                  );
+                  if (data.success) {
+                    toast.success(data.message);
+                    await fetchComments();
+                  } else {
+                    toast.error(data.message);
+                  }
+                } catch (error) {
+                  toast.error(error.message);
+                }
+              }}
+              className="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600"
+            >
+              Hapus
+            </button>
+            <button
+              onClick={() => toast.dismiss(t.id)}
+              className="bg-gray-300 px-3 py-1 rounded text-sm hover:bg-gray-400"
+            >
+              Batal
+            </button>
+          </div>
+        </div>
+      ),
+      {
+        duration: Infinity,
+        position: "top-center",
+      }
+    );
+  };
 
   return (
     <tr className="border-y border-gray-300 whitespace-nowrap">
@@ -28,6 +98,7 @@ const CommentTableItem = ({ comment, fetchComments }) => {
         <div className="flex items-center gap-2">
           {!comment.isApproved ? (
             <button
+              onClick={approveComment}
               className="w-6 h-6 flex items-center justify-center rounded bg-green-200 hover:bg-green-400 transition-colors cursor-pointer"
               title="Konfirmasi"
             >
@@ -44,6 +115,7 @@ const CommentTableItem = ({ comment, fetchComments }) => {
           )}
 
           <button
+            onClick={deleteComment}
             className="w-6 h-6 flex items-center justify-center rounded bg-red-300 hover:bg-red-500 transition-colors cursor-pointer"
             title="Hapus komentar"
           >
