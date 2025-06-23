@@ -1,0 +1,33 @@
+# --- SERVER ---
+server/node_modules
+server/.env
+
+# --- CLIENT ---
+client/node_modules
+client/dist
+client/dist-ssr
+client/*.local
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# --- EDITOR FILES ---
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Optional: ignore logs or temp in root
+logs/
+.env
+node_modules/
