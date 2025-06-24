@@ -102,7 +102,35 @@ const AddBlog = () => {
                 className="h-16 rounded cursor-pointer border border-gray-200 hover:border-gray-300 transition-colors"
               />
               <input
-                onChange={(e) => setImage(e.target.files[0])}
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (!file) return;
+
+                  const allowedTypes = [
+                    "image/jpeg",
+                    "image/png",
+                    "image/webp",
+                    "image/jpg",
+                  ];
+
+                  if (!allowedTypes.includes(file.type)) {
+                    toast.error(
+                      "Format gambar tidak valid. Hanya JPG, JPEG, PNG, atau WebP yang diperbolehkan."
+                    );
+                    e.target.value = null;
+                    setImage(false);
+                    return;
+                  }
+
+                  if (file.size > 1024 * 1024) {
+                    toast.error("Ukuran gambar terlalu besar. Maksimal 1 MB.");
+                    e.target.value = null;
+                    setImage(false);
+                    return;
+                  }
+
+                  setImage(file);
+                }}
                 type="file"
                 id="image"
                 hidden
