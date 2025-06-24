@@ -11,6 +11,7 @@ import Login from "./components/admin/Login";
 import "quill/dist/quill.snow.css";
 import { Toaster } from "react-hot-toast";
 import { useAppContext } from "./context/AppContext";
+import GenerateImage from "./pages/admin/GenerateImage";
 
 const App = () => {
   const { token } = useAppContext();
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="addBlog" element={<AddBlog />} />
           <Route path="listBlog" element={<ListBlog />} />
           <Route path="comment" element={<Comment />} />
+          <Route path="generate-blog" element={<GenerateImage />} />
         </Route>
       </Routes>
     </div>

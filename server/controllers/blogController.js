@@ -5,6 +5,10 @@ import Comment from "../models/commentModel.js";
 import main from "../configs/gemini.js";
 import { detect } from "langdetect";
 import { measureMemory } from "vm";
+import {
+  generateImage,
+  deleteTemporaryImage,
+} from "../configs/pollinations.js";
 
 export const addBlog = async (req, res) => {
   try {
@@ -247,3 +251,107 @@ export const generateContent = async (req, res) => {
     });
   }
 };
+
+const temporaryImages = new Map();
+
+export const generateImageBlog = async (req, res) => {
+  try {
+    const { prompt, sessionId } = req.body;
+
+    if (!prompt) {
+      return res.json({
+        success: false,
+        message: "Prompt tidak boleh kosong",
+      });
+    }
+
+    if (sessionId && temporaryImages.has(sessionId)) {
+      const oldFileId = temporaryImages.get(sessionId);
+      await deleteTemporaryImage(oldFileId);
+      temporaryImages.delete(sessionId);
+    }
+
+    const result = await generateImage(prompt);
+
+    if (sessionId) {
+      temporaryImages.set(sessionId, {
+        fileId: result.fileId,
+        timestamp: Date.now(),
+      });
+    }
+
+    res.json({
+      success: true,
+      imageUrl: result.imageUrl,
+      fileId: result.fileId,
+    });
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const deleteTemporaryImageBlog = async (req, res) => {
+  try {
+    const { fileId, sessionId } = req.body;
+
+    if (fileId) {
+      await deleteTemporaryImage(fileId);
+    }
+
+    if (sessionId && temporaryImages.has(sessionId)) {
+      temporaryImages.delete(sessionId);
+    }
+
+    res.json({
+      success: true,
+      message: "Gambar temporary berhasil dihapus",
+    });
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const savePermanentImage = async (req, res) => {
+  try {
+    const { fileId, sessionId } = req.body;
+
+    if (sessionId && temporaryImages.has(sessionId)) {
+      temporaryImages.delete(sessionId);
+    }
+
+    res.json({
+      success: true,
+      message: "Gambar berhasil disimpan permanent",
+    });
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+setInterval(async () => {
+  const now = Date.now();
+  const oneHour = 60 * 60 * 1000;
+
+  for (const [sessionId, { fileId, timestamp }] of temporaryImages.entries()) {
+    if (now - timestamp >= oneHour) {
+      try {
+        await deleteTemporaryImage(fileId);
+        temporaryImages.delete(sessionId);
+        console.log(
+          `Gambar temporary dari session ${sessionId} dihapus otomatis.`
+        );
+      } catch (err) {
+        console.error(`Gagal menghapus fileId ${fileId}:`, err.message);
+      }
+    }
+  }
+}, 60 * 60 * 1000);

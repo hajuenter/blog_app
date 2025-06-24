@@ -176,7 +176,12 @@ const AddBlog = () => {
                 disabled={loading}
                 type="button"
                 onClick={generateContent}
-                className="absolute bottom-2 right-2 text-xs text-white bg-black/70 px-4 py-1.5 rounded hover:bg-black/80 transition-colors cursor-pointer"
+                className={`absolute bottom-2 right-2 text-xs text-white px-4 py-1.5 rounded transition-colors
+                ${
+                  loading
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-black/70 hover:bg-black/80 cursor-pointer"
+                }`}
               >
                 Buat dengan AI
               </button>
