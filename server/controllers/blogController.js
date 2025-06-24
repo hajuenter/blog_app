@@ -2,6 +2,9 @@ import fs from "fs";
 import imageKit from "../configs/imageKit.js";
 import Blog from "../models/blogModel.js";
 import Comment from "../models/commentModel.js";
+import main from "../configs/gemini.js";
+import { detect } from "langdetect";
+import { measureMemory } from "vm";
 
 export const addBlog = async (req, res) => {
   try {
@@ -181,6 +184,48 @@ export const getBlogComment = async (req, res) => {
     res.json({
       success: true,
       comments,
+    });
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const generateContent = async (req, res) => {
+  try {
+    const { prompt } = req.body;
+    const detectedLang = detect(prompt);
+
+    const promptInEnglish = `
+     Write an engaging and informative blog article about the topic: "${prompt}".
+      - Make it at least 500 words long.
+      - Use simple and clear language for a general audience.
+      - Include an attention-grabbing introduction.
+      - Structure the content with subheadings.
+      - End with a conclusion or call to action.
+      - Output in plain text format.
+    `;
+
+    const promptInIndonesian = `
+     Tulis artikel blog yang menarik dan informatif tentang topik: "${prompt}".
+      - Panjang artikel minimal 500 kata.
+      - Gunakan bahasa yang mudah dipahami oleh pembaca umum.
+      - Sertakan pembuka yang menarik perhatian.
+      - Bagi artikel dengan subjudul yang jelas.
+      - Akhiri dengan kesimpulan atau ajakan bertindak.
+      - Tampilkan hasil dalam format teks biasa.
+    `;
+
+    const finalPrompt =
+      detectedLang === "id" ? promptInIndonesian : promptInEnglish;
+
+    const contentGenerate = await main(finalPrompt);
+
+    res.json({
+      success: true,
+      contentGenerate,
     });
   } catch (error) {
     res.json({
