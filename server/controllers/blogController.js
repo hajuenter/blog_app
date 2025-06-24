@@ -228,9 +228,22 @@ export const generateContent = async (req, res) => {
       contentGenerate,
     });
   } catch (error) {
-    res.json({
+    const errorMessage = error?.response?.data?.error?.message || error.message;
+
+    if (
+      error?.response?.status === 503 ||
+      errorMessage.includes("The model is overloaded")
+    ) {
+      return res.status(503).json({
+        success: false,
+        message:
+          "Server AI sedang sibuk (overloaded). Silakan coba beberapa saat lagi.",
+      });
+    }
+
+    res.status(500).json({
       success: false,
-      message: error.message,
+      message: errorMessage,
     });
   }
 };
