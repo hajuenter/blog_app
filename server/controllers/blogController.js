@@ -3,7 +3,7 @@ import imageKit from "../configs/imageKit.js";
 import Blog from "../models/blogModel.js";
 import Comment from "../models/commentModel.js";
 import main from "../configs/gemini.js";
-import { detect } from "langdetect";
+import { franc } from "franc";
 import { measureMemory } from "vm";
 import {
   generateImage,
@@ -200,7 +200,9 @@ export const getBlogComment = async (req, res) => {
 export const generateContent = async (req, res) => {
   try {
     const { prompt } = req.body;
-    const detectedLang = detect(prompt);
+
+    const langCode = franc(prompt);
+    const detectedLang = langCode === "ind" ? "id" : "en";
 
     const promptInEnglish = `
      Write an engaging and informative blog article about the topic: "${prompt}".
