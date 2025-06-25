@@ -43,6 +43,13 @@ async function deleteTemporaryImage(fileId) {
     await imageKit.deleteFile(fileId);
     return true;
   } catch (error) {
+    const msg =
+      error?.message || error?.response?.data?.message || "Unknown error";
+
+    if (msg.includes("does not exist")) {
+      return false;
+    }
+
     console.error("Error deleting temporary image:", error);
     return false;
   }

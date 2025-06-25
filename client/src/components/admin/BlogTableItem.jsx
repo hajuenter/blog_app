@@ -109,7 +109,41 @@ const BlogTableItem = ({ blog, fetchBlog, index }) => {
             title="Hapus blog"
           >
             <img
-              onClick={deleteBlog}
+              onClick={() => {
+                toast(
+                  (t) => (
+                    <div className="flex flex-col gap-3">
+                      <div>
+                        <p className="font-medium">Konfirmasi Hapus</p>
+                        <p className="text-sm text-gray-600">
+                          Yakin ingin menghapus blog ini?
+                        </p>
+                      </div>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={async () => {
+                            toast.dismiss(t.id);
+                            await deleteBlog();
+                          }}
+                          className="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700"
+                        >
+                          Hapus
+                        </button>
+                        <button
+                          onClick={() => toast.dismiss(t.id)}
+                          className="bg-gray-300 px-3 py-1 rounded text-sm hover:bg-gray-400"
+                        >
+                          Batal
+                        </button>
+                      </div>
+                    </div>
+                  ),
+                  {
+                    duration: Infinity,
+                    position: "top-center",
+                  }
+                );
+              }}
               src={assets.cross_icon}
               className="w-4 h-4"
               alt="delete"
