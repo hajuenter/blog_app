@@ -186,7 +186,7 @@ blog_app/
 │   ├── public/
 │   └── package.json
 ├── server/                 # Backend Express
-│   ├── aplications/
+│   ├── applications/
 │   ├── models/
 │   ├── routes/
 │   ├── middleware/

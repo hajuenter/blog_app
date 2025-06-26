@@ -265,25 +265,27 @@ export const footer_data = [
   {
     title: "Tautan Cepat",
     links: [
-      "Beranda",
-      "Terlaris",
-      "Penawaran & Diskon",
-      "Hubungi Kami",
-      "FAQs",
+      { label: "Beranda" }, // tanpa URL
+      { label: "FAQs" },
     ],
   },
   {
     title: "Butuh Bantuan?",
     links: [
-      "Informasi Pengiriman",
-      "Kebijakan Pengembalian & Refund",
-      "Metode Pembayaran",
-      "Lacak Pesanan Anda",
-      "Hubungi Kami",
+      { label: "Integrasi dengan AI" },
+      { label: "Hubungi Kami", url: "mailto:esjeruk517@gmail.com" },
     ],
   },
   {
     title: "Ikuti Kami",
-    links: ["Instagram", "Twitter", "Facebook", "YouTube"],
+    links: [
+      { label: "Instagram", url: "https://instagram.com/shusui_songolas" },
+      { label: "Twitter", url: "https://x.com/shusui_songolas" },
+      {
+        label: "Facebook",
+        url: "https://web.facebook.com/profile.php?id=100009064796323",
+      },
+      { label: "YouTube", url: "https://www.youtube.com/@HajuenterOfficial" },
+    ],
   },
 ];

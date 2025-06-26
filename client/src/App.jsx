@@ -17,7 +17,13 @@ const App = () => {
   const { token } = useAppContext();
   return (
     <div>
-      <Toaster />
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+        }}
+      />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog/:id" element={<Blog />} />
