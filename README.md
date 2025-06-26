@@ -12,17 +12,20 @@
 ## ✨ Fitur Unggulan
 
 ### 🤖 **Pembuatan Konten dengan AI**
+
 - **Generator Deskripsi Otomatis**: Masukkan judul blog, lalu sistem akan menghasilkan deskripsi komprehensif menggunakan **Google Gemini 2.5 Flash**
 - **Optimasi SEO**: Konten yang dihasilkan sudah dioptimasi untuk mesin pencari
 - **Konteks yang Relevan**: AI memahami topik dan menghasilkan konten yang sesuai dengan tema
 
 ### 🎨 **Generator Gambar AI**
+
 - **Text-to-Image**: Ubah deskripsi teks menjadi gambar visual yang menarik
 - **Powered by Pollinations AI**: Teknologi canggih untuk menghasilkan gambar berkualitas tinggi
 - **Penyimpanan Cloud**: Integrasi dengan **ImageKit** untuk manajemen gambar yang optimal
 - **Responsive Design**: Gambar otomatis dioptimasi untuk berbagai perangkat
 
 ### 📱 **Interface Modern**
+
 - **Responsive Design**: Tampilan yang sempurna di desktop, tablet, dan mobile
 - **User Experience**: Interface intuitif dan mudah digunakan
 - **Real-time Preview**: Lihat hasil konten sebelum dipublikasikan
@@ -30,6 +33,7 @@
 ---
 
 ## 🖼️ Tampilan Website
+
 <div align="center">
 🏠 Halaman Utama
 <img src="./screenshots/home-page.png" alt="Halaman Utama Hajuenter Blog" width="800"/>
@@ -50,16 +54,19 @@
 ## 🛠️ Stack Teknologi
 
 ### **Frontend**
+
 - ⚛️ **React.js** - Library JavaScript untuk membangun antarmuka pengguna
 - ⚡ **Vite** - Build tool modern untuk development yang cepat
 - 🎨 **Tailwind CSS** - Styling responsif dan menarik
 
 ### **Backend**
+
 - 🚀 **Express.js** - Framework web yang cepat dan minimalis
 - 🍃 **MongoDB** - Database NoSQL untuk fleksibilitas data
 - 🔐 **JWT Authentication** - Sistem autentikasi yang aman
 
 ### **Integrasi AI & Cloud**
+
 - 🧠 **Google Gemini 2.5 Flash** - AI untuk generasi konten blog
 - 🎨 **Pollinations AI** - AI untuk generasi gambar dari prompt
 - 📸 **ImageKit** - CDN dan manajemen gambar cloud
@@ -69,18 +76,21 @@
 ## 🚀 Panduan Instalasi
 
 ### **Prasyarat**
+
 - Node.js (versi v22.16.0 atau lebih baru)
 - NPM (versi 10.9.2 atau lebih baru)
 - MongoDB (lokal atau cloud)
 - Git
 
 ### **1. Clone Repository**
+
 ```bash
 git clone https://github.com/hajuenter/blog_app.git
 cd blog_app
 ```
 
 ### **2. Setup Backend**
+
 ```bash
 # Masuk ke direktori server
 cd server
@@ -93,6 +103,7 @@ npm run dev
 ```
 
 ### **3. Setup Frontend**
+
 ```bash
 # Buka terminal baru dan masuk ke direktori client
 cd client
@@ -107,6 +118,7 @@ npm run dev
 ### **4. Konfigurasi Environment Variables**
 
 #### **File `.env` untuk folder `server`**
+
 ```env
 # DATABASE CONFIGURATION
 MONGODB_URL=your_mongo_db_url
@@ -128,13 +140,16 @@ GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
 #### **File `.env` untuk folder `client`**
+
 ```env
 # API CONFIGURATION
 VITE_BASE_URL=http://localhost:3000
 ```
 
 ### **5. Menjalankan Aplikasi**
+
 Setelah kedua server berjalan:
+
 - **Frontend**: `http://localhost:5173`
 - **Backend**: `http://localhost:3000`
 
@@ -143,6 +158,7 @@ Setelah kedua server berjalan:
 ## 📖 Cara Penggunaan
 
 ### **Membuat Blog Post**
+
 1. Login ke dashboard admin
 2. Klik "Tambah Blog Baru"
 3. Masukkan judul blog
@@ -151,6 +167,7 @@ Setelah kedua server berjalan:
 6. Review dan publikasikan
 
 ### **Generate Gambar**
+
 1. Masukkan deskripsi gambar yang diinginkan (contoh: "sunset over mountains with cyberpunk city")
 2. Klik "Buat Gambar"
 3. Tunggu beberapa detik hingga gambar terbuat
@@ -161,6 +178,7 @@ Setelah kedua server berjalan:
 ## 🔧 Pengembangan Lanjutan
 
 ### **Struktur Folder**
+
 ```
 blog_app/
 ├── client/                 # Frontend React
@@ -188,6 +206,7 @@ Kami sangat mengapresiasi kontribusi dari komunitas! Berikut cara berkontribusi:
 5. **Buat Pull Request** dengan deskripsi yang jelas
 
 ### **Panduan Kontribusi**
+
 - Ikuti konvensi kode yang sudah ada
 - Tambahkan tests untuk fitur baru
 - Update dokumentasi jika diperlukan
