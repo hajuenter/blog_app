@@ -32,7 +32,7 @@ const AnimatedDualCircleButtons = () => {
       >
         <button
           onClick={toggleBot}
-          className={`p-2.5 md:p-3 lg:p-3 xl:p-3 rounded-full bg-primary shadow-lg transition-all duration-300 transform hover:scale-110 ${
+          className={`p-2.5 md:p-3 lg:p-3 xl:p-3 rounded-full bg-primary shadow-lg transition-all duration-300 transform hover:scale-102 ${
             isBotOpen ? "scale-105 bg-primary" : ""
           }`}
         >
@@ -112,9 +112,9 @@ const AnimatedDualCircleButtons = () => {
               <input
                 type="text"
                 placeholder="Ketik pesan Anda..."
-                className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 focus:scale-[1.02]"
+                className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 focus:scale-[1.01]"
               />
-              <button className="p-2 bg-primary hover:bg-primary rounded-lg transition-all duration-200 hover:scale-110 active:scale-95">
+              <button className="p-2 bg-primary hover:bg-primary rounded-lg transition-all duration-200 hover:scale-102 active:scale-95">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="none"
@@ -145,12 +145,12 @@ const AnimatedDualCircleButtons = () => {
         >
           <button
             onClick={scrollToTop}
-            className="mt-2 p-2.5 md:p-3 lg:p-3 xl:p-3 rounded-full bg-primary shadow-lg transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 active:scale-95"
+            className="mt-2 p-2.5 md:p-3 lg:p-3 xl:p-3 rounded-full bg-primary shadow-lg transition-all duration-300 transform hover:scale-102 hover:-translate-y-0.5 active:scale-95"
           >
             <img
               src={assets.arrow_top}
               alt="Scroll to top"
-              className="w-4 h-4 md:w-4 md:h-4 lg:h-7 lg:w-7 xl:w-8 xl:h-8 transition-transform duration-300 hover:-translate-y-0.5"
+              className="w-4 h-4 md:w-4 md:h-4 lg:h-7 lg:w-7 xl:w-8 xl:h-8 transition-transform duration-300"
             />
           </button>
         </div>
