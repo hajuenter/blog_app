@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import Layout from "./pages/admin/Layout";
@@ -12,17 +12,25 @@ import "quill/dist/quill.snow.css";
 import { Toaster } from "react-hot-toast";
 import { useAppContext } from "./context/AppContext";
 import GenerateImage from "./pages/admin/GenerateImage";
+import DualButtonToTopAndBot from "./components/DualButtonToTopAndBot";
 
 const App = () => {
   const { token } = useAppContext();
+
+  const location = useLocation();
+
+  const showScrollAndBot =
+    location.pathname === "/" || location.pathname.startsWith("/blog");
   return (
     <div>
       <Toaster
-        position="top-right"
+        position="top-center"
         toastOptions={{
           duration: 3000,
         }}
       />
+
+      {showScrollAndBot && <DualButtonToTopAndBot />}
 
       <Routes>
         <Route path="/" element={<Home />} />

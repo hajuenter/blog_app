@@ -32,6 +32,9 @@ import dashboard_icon_2 from "./dashboard_icon_2.svg";
 import dashboard_icon_3 from "./dashboard_icon_3.svg";
 import dashboard_icon_4 from "./dashboard_icon_4.svg";
 import image_up from "./image_up.svg";
+import bot from "./bot.svg";
+import arrow_top from "./arrow_top.svg";
+import bot_message from "./bot-message-square.svg";
 
 export const assets = {
   facebook_icon,
@@ -58,6 +61,9 @@ export const assets = {
   dashboard_icon_3,
   dashboard_icon_4,
   image_up,
+  arrow_top,
+  bot_message,
+  bot,
 };
 export const blogCategories = [
   "All",
