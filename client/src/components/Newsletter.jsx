@@ -6,6 +6,10 @@ function Newsletter() {
   const [email, setEmail] = useState("");
   const [isSending, setIsSending] = useState(false);
 
+  const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
   const validateEmail = (email) => {
     const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
     return gmailRegex.test(email);
@@ -25,12 +29,7 @@ function Newsletter() {
     };
     setIsSending(true);
     try {
-      await emailjs.send(
-        "service_q2m3liu",
-        "template_98er07k",
-        templateParams,
-        "7X67mNaD8LAkxZUwc"
-      );
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
       toast.success("Berhasil mengirim! Terima kasih.");
       setEmail("");
     } catch (error) {
