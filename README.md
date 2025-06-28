@@ -68,6 +68,7 @@
 ### **Integrasi AI & Cloud**
 
 - 🧠 **Google Gemini 2.5 Flash** - AI untuk generasi konten blog
+- 🤖 **DeeSeek:RI** - AI untuk chat bot
 - 🎨 **Pollinations AI** - AI untuk generasi gambar dari prompt
 - 📸 **ImageKit** - CDN dan manajemen gambar cloud
 
