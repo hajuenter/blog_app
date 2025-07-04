@@ -3,7 +3,7 @@
 <div align="center">
   <h3>Platform Blog Modern dengan Kecerdasan Buatan</h3>
   <p>
-    <strong>Hajuenter Blog</strong> adalah platform blog inovatif yang mengintegrasikan teknologi AI untuk memberikan pengalaman menulis yang lebih cerdas dan efisien. Platform ini membahas berbagai topik terkini mulai dari berita global, teknologi, hingga analisis konflik internasional.
+    <strong>Hajuenter Blog</strong> adalah platform blog inovatif yang mengintegrasikan teknologi AI untuk memberikan pengalaman menulis yang lebih cerdas dan efisien. Platform ini membahas berbagai topik terkini mulai dari berita global, teknologi, hingga analisis konflik internasional. Semua teknologi yang digunakan untuk membangun website ini adalah gratis dan bersumber terbuka (free and open source).
   </p>
 </div>
 
@@ -29,6 +29,12 @@
 - **Responsive Design**: Tampilan yang sempurna di desktop, tablet, dan mobile
 - **User Experience**: Interface intuitif dan mudah digunakan
 - **Real-time Preview**: Lihat hasil konten sebelum dipublikasikan
+
+### 📳 **Chat Bot**
+
+- **Asisten AI Serbaguna**: Tanyakan apa saja! Dapatkan bantuan cerdas untuk membantumu
+- **Dukungan Instan**: Dapatkan jawaban cepat untuk pertanyaan Anda dan panduan penggunaan platform
+- **Terhubung dengan Developer**: Ingin berkenalan atau memberikan masukan kepada developer? Chat bot akan memfasilitasi koneksi Anda
 
 ---
 
@@ -138,6 +144,9 @@ IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/your_imagekit_id
 
 # GEMINI AI CONFIGURATION
 GEMINI_API_KEY=your_gemini_api_key_here
+
+# DEEPSEEK API KEY
+DEEPSEEK_API_KEY =your_deepseek_api_key_here
 ```
 
 #### **File `.env` untuk folder `client`**
@@ -145,6 +154,11 @@ GEMINI_API_KEY=your_gemini_api_key_here
 ```env
 # API CONFIGURATION
 VITE_BASE_URL=http://localhost:3000
+
+# EMAIL JS CONFIGURATION
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
 ### **5. Menjalankan Aplikasi**
@@ -186,6 +200,7 @@ blog_app/
 │   ├── src/
 │   ├── public/
 │   └── package.json
+│   └── .env
 ├── server/                 # Backend Express
 │   ├── applications/
 │   ├── models/
@@ -193,6 +208,7 @@ blog_app/
 │   ├── middleware/
 │   ├── src/
 │   └── package.json
+│   └── .env
 └── README.md
 ```
 
