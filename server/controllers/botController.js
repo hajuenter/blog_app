@@ -1,4 +1,4 @@
-import deepseek from "../configs/deepseek.js";
+import { mainWithSystem as deepseek } from "../configs/gemini.js";
 
 export const botSend = async (req, res) => {
   const { prompt } = req.body;
@@ -118,7 +118,7 @@ export const botSend = async (req, res) => {
     const lowerPrompt = prompt.toLowerCase();
     for (const intent of intents) {
       const matched = intent.keywords.some((keyword) =>
-        lowerPrompt.includes(keyword)
+        lowerPrompt.includes(keyword),
       );
       if (matched) {
         return intent.response;

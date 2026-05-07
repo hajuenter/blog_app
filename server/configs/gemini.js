@@ -10,4 +10,21 @@ async function main(prompt) {
   return response.text;
 }
 
+async function mainWithSystem(prompt, systemPrompt = "") {
+  const fullPrompt = `
+${systemPrompt}
+
+User:
+${prompt}
+`;
+
+  const response = await ai.models.generateContent({
+    model: "gemini-2.5-flash",
+    contents: fullPrompt,
+  });
+
+  return response.text;
+}
+
+export { mainWithSystem };
 export default main;
